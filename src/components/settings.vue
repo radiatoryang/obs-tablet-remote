@@ -39,6 +39,30 @@
 					Reset Layout
 				</button>
 			</div>
+			<div class="w-1/2 px-2">
+				<div class="field">
+					<label
+						:for="`settings-captionURL`"
+						class="label"
+					>Caption Scrape URL</label>
+					<input
+						:id="`settings-captionURL`"
+						v-model="captionURL"
+						class="input"
+					>
+				</div>
+				<div class="field">
+					<label
+						:for="`settings-captionCSS`"
+						class="label"
+					>Caption CSS Selector</label>
+					<input
+						:id="`settings-captionCSS`"
+						v-model="captionCSS"
+						class="input"
+					>
+				</div>
+			</div>
 		</div>
 	</overlay>
 </template>
@@ -61,7 +85,24 @@ export default {
 			set(value) {
 				this.setSetting({key: 'theme', value})
 			}
+		},
+		captionURL: {
+			get({settings}) {
+				return settings.captionURL
+			},
+			set(value) {
+				this.setSetting({key: 'captionURL', value})
+			}
+		},
+		captionCSS: {
+			get({settings}) {
+				return settings.captionCSS
+			},
+			set(value) {
+				this.setSetting({key: 'captionCSS', value})
+			}
 		}
+
 	},
 	methods: {
 		askForReset() {
